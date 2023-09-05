@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.darvishiyan.domain"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 28
@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":entity")))
+    api(project(mapOf("path" to ":entity")))
 
     implementation("androidx.core:core-ktx:${rootProject.extra["core_ktx_version"]}")
 
