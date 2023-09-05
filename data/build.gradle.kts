@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.darvishiyan.data"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 28
@@ -22,6 +22,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    buildFeatures {
+        buildConfig = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -33,7 +36,7 @@ android {
 
 dependencies {
 
-    implementation(project(mapOf("path" to ":domain")))
+    api(project(mapOf("path" to ":domain")))
 
     implementation("androidx.core:core-ktx:${rootProject.extra["core_ktx_version"]}")
 
@@ -46,8 +49,9 @@ dependencies {
     val retrofitVersion = rootProject.extra["retrofit_version"]
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("com.squareup.okhttp3:okhttp:${rootProject.extra["okhttp_version"]}")
-    implementation("com.squareup.okhttp3:logging-interceptor:$retrofitVersion")
+    val okhttpVersion = rootProject.extra["okhttp_version"]
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
 
     // -------------- test
     testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
