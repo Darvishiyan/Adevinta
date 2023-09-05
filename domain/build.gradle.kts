@@ -43,4 +43,6 @@ dependencies {
 
     // -------------- test
     testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
+    testImplementation("io.mockk:mockk:${rootProject.extra["mockk_version"]}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${rootProject.extra["coroutines_test_version"]}")
 }

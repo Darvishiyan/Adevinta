@@ -16,5 +16,7 @@ allprojects {
         set("retrofit_version", "2.9.0")
         set("okhttp_version", "4.10.0")
         set("navigation_version", "2.7.1")
+        set("mockk_version", "1.12.0")
+        set("coroutines_test_version", "1.6.1")
     }
 }

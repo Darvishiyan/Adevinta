@@ -81,6 +81,6 @@ dependencies {
 
     // -------------- test
     testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation("io.mockk:mockk:${rootProject.extra["mockk_version"]}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${rootProject.extra["coroutines_test_version"]}")
 }
