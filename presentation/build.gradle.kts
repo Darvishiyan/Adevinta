@@ -3,11 +3,12 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "com.darvishiyan.adevinta2"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.darvishiyan.adevinta2"
@@ -32,6 +33,27 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    kapt {
+        correctErrorTypes = true
+        useBuildCache = false
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    packaging {
+        resources.excludes.add("META-INF/DEPENDENCIES")
+        resources.excludes.add("META-INF/LICENSE")
+        resources.excludes.add("META-INF/LICENSE.txt")
+        resources.excludes.add("META-INF/license.txt")
+        resources.excludes.add("META-INF/NOTICE")
+        resources.excludes.add("META-INF/NOTICE.txt")
+        resources.excludes.add("META-INF/notice.txt")
+        resources.excludes.add("META-INF/ASL2.0")
+        resources.excludes.add("META-INF/*.kotlin_module")
+        resources.excludes.add("META-INF/licenses/**")
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
+    }
 }
 
 dependencies {
@@ -44,9 +66,18 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
 
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
+
+    // -------------- Navigation
+    val navigationVersion = rootProject.extra["navigation_version"]
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion")
+    implementation("androidx.core:core-ktx:1.10.1")
+
+
+    implementation("com.squareup.picasso:picasso:2.71828")
 
     // -------------- test
     testImplementation("junit:junit:${rootProject.extra["junit_version"]}")
